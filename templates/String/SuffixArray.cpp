@@ -1,6 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-const int N = 100005;
 
 struct SuffixArray {
     int n, m, buc[N], x[N], y[N], sa[N], rk[N], height[N];
@@ -55,10 +52,12 @@ struct SuffixArray {
         }
     }
     int lcp(int x, int y) {
+        if(x == y) return n - x;
         x = rk[x], y = rk[y];
         if(x > y) swap(x, y);
         x++;
-        return min(st[x][lg[y - x + 1]], st[y - (1 << lg[y - x + 1]) + 1][lg[y - x + 1]]);
+        int t = lg[y - x + 1];
+        return min(st[x][t], st[y - (1 << t) + 1][t]);
     }
 };
 
