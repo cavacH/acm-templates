@@ -73,4 +73,4 @@ struct mcmf {
         return ret;
     }
     
-} T;
+};
