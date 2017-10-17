@@ -51,6 +51,8 @@ struct SuffixArray {
             }
         }
     }
+    
+    // calculate lcp of suffix(s[x]) and suffix(s[y])
     int lcp(int x, int y) {
         if(x == y) return n - x;
         x = rk[x], y = rk[y];
