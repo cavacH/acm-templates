@@ -1,13 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define pb push_back
-#define LL long long
-#define mem(x, y) memset(x, y, sizeof(x))
-#define pii pair<int, int>
-#define mkp make_pair
 const int N = 505;
 const double eps = 1e-8;
 double a[N][N], x[N];
+
+/*
+ *  a[0][0]*x[0]+a[0][1]*x[1]+...+a[0][col-2]*x[col-2] = a[0][col-1]
+ *                  ...
+ *  a[row-1][0]*x[0]+a[row-1][1]*x[1]+...+a[row-1][col-2]*x[col-2] = a[row-1][col-1]
+ * 
+ *  return value: 1-has solution   0-no solution
+ * */
 
 int Gauss(int row, int col) {
     for(int i = 0, j = 0; i < row && j < col - 1; i++, j++) {
@@ -39,15 +42,16 @@ int Gauss(int row, int col) {
     return 1;
 }
 
-int main()
-{
+int main() {
+    
     a[0][0] = a[0][1] = 1;
     a[0][2] = 3;
     a[1][0] = 1;
     a[1][1] = -1;
     a[1][2] = 5;
-    cout << Gauss(2, 3) << endl;
-    cout << x[0] << " " << x[1] << endl;
+    cout << Gauss(2, 3) << endl; // 1
+    cout << x[0] << " " << x[1] << endl; // 4 -1
+    
     return 0;
 }
 
